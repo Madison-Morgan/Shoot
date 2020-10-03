@@ -3,4 +3,5 @@
     <string name="rock">Rock</string>
     <string name="paper">Paper</string>
     <string name="scissors">Scissor</string>
+    <string name="mute">Mute</string>
 </resources>
