@@ -6,21 +6,27 @@
 
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".WelcomeFragment">
+        style = "@style/FragmentMargins"
+        tools:context=".WelcomeFragment"
+        android:orientation="vertical">
+
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/textViewWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/RobotoTextViewStyle"
             android:text="Hello" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonLetsGo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            style="@style/RobotoButtonStyle"
+            android:text="LETS GO" />
 
-    </FrameLayout>
+    </LinearLayout>
 </layout>

@@ -24,7 +24,7 @@ class GameInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.game_info_fragment, container, false)
-        binding.button2.setOnClickListener{
+        binding.buttonUnderstand.setOnClickListener{
             view: View ->
             view.findNavController().navigate(R.id.action_gameInfoFragment_to_gameFragment)
         }

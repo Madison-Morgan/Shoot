@@ -24,7 +24,7 @@ class ResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.result_fragment, container, false)
-        binding.button3.setOnClickListener{
+        binding.buttonPlayAgain.setOnClickListener{
             view: View->
             view.findNavController().navigate(R.id.action_resultFragment_to_gameFragment)
         }

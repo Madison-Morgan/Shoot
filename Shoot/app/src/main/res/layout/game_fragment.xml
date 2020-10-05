@@ -6,15 +6,31 @@
 
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".GameFragment">
+        style = "@style/FragmentMargins"
+        tools:context=".GameFragment"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/RobotoTextViewStyle"
+            android:text="LETS PLAY!" />
 
-    </FrameLayout>
+        <Button
+            android:id="@+id/buttonTakePicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TAKE PICTURE"/>
+
+        <TextView
+            android:id="@+id/textViewResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ParagraphTextViewStyle"
+            android:text="Here we see the result" />
+
+    </LinearLayout>
 </layout>

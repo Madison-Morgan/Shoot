@@ -22,7 +22,7 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.welcome_fragment, container, false)
-        binding.button.setOnClickListener{
+        binding.buttonLetsGo.setOnClickListener{
             view: View ->
             view.findNavController().navigate(R.id.action_welcomeFragment_to_gameInfoFragment)
         }
