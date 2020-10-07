@@ -30,7 +30,7 @@ class ClassifierMove(private val context: Context) {
     private var inputImageHeight: Int = 0 // will be inferred from TF Lite model.
     private var modelInputSize: Int = 0 // will be inferred from TF Lite model.
 
-    fun initialize(): Task<Void> {
+    /*fun initialize(): Task<Void> {
         val task = TaskCompletionSource<Void>()
         executorService.execute {
             try {
@@ -41,6 +41,9 @@ class ClassifierMove(private val context: Context) {
             }
         }
         return task.task
+    }*/
+    fun initialize(){
+        initializeInterpreter()
     }
 
     private fun initializeInterpreter(){
@@ -101,13 +104,17 @@ class ClassifierMove(private val context: Context) {
         return resultString
     }
 
-    fun classifyAsync(bitmap: Bitmap): Task<String> {
+    /*fun classifyAsync(bitmap: Bitmap): Task<String> {
         val task = TaskCompletionSource<String>()
         executorService.execute {
             val result = classify(bitmap)
             task.setResult(result)
         }
         return task.task
+    }*/
+    fun classifyAsync(bitmap: Bitmap): String{
+        val result = classify(bitmap)
+        return result
     }
 
     private fun convertBitmapToByteBuffer(bitmap: Bitmap): ByteBuffer {
@@ -130,10 +137,15 @@ class ClassifierMove(private val context: Context) {
         return byteBuffer
     }
 
-    fun close(){
+    /*fun close(){
         executorService.execute {
             interpreter?.close()
             Log.d(TAG, "Closed TFLite interpreter.")
         }
+    }*/
+
+    fun close(){
+        interpreter?.close()
+        Log.d(TAG, "Closed TFLite interpreter.")
     }
 }

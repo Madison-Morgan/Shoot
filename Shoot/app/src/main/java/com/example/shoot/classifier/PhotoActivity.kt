@@ -14,6 +14,8 @@ import android.util.Log
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import com.example.shoot.BuildConfig
 import com.example.shoot.R
 
 private const val REQUEST_PERMISSIONS = 1
@@ -29,7 +31,7 @@ class PhotoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo)
-        predictedTextView = findViewById(R.id.textView)
+        predictedTextView = findViewById(R.id.textViewResult)
         confirmPermissions()
         classifier.initialize()
     }
@@ -63,7 +65,8 @@ class PhotoActivity : AppCompatActivity() {
 
     private fun takePhoto(){
         photoFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).absolutePath + "/${System.currentTimeMillis()}.jpg"
-        val currentPhotoUri = Uri.fromFile( File(photoFilePath))
+        val currentPhotoUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID+ ".provider", File(photoFilePath) )
+        //val currentPhotoUri = Uri.fromFile( File(photoFilePath))
 
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, currentPhotoUri)
@@ -89,13 +92,14 @@ class PhotoActivity : AppCompatActivity() {
         val bitmap = BitmapFactory.decodeFile(file.absolutePath)
 
         if ((bitmap != null) && (classifier.isInitialized)) {
-            classifier
-                .classifyAsync(bitmap)
-                .addOnSuccessListener { resultText -> predictedTextView?.text = resultText }
+            val result = classifier.classifyAsync(bitmap)
+            predictedTextView?.text = result
+
+                /*.addOnSuccessListener { resultText -> predictedTextView?.text = resultText }
                 .addOnFailureListener { e ->
                     predictedTextView?.text = "ffuuuckkkk"
                     Log.e(TAG, "Error classifying drawing.", e)
-                }
+                }*/
         }
     }
 

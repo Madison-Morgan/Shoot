@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.shoot.databinding.GameInfoFragmentBinding
+import kotlinx.android.synthetic.main.game_info_fragment.view.*
 
 class GameInfoFragment : Fragment() {
 
@@ -21,14 +22,14 @@ class GameInfoFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
+        val view: View = inflater!!.inflate(R.layout.game_info_fragment, container, false)
         binding = DataBindingUtil.inflate(inflater,R.layout.game_info_fragment, container, false)
-        binding.buttonUnderstand.setOnClickListener{
+        view.buttonUnderstand.setOnClickListener{
             view: View ->
             view.findNavController().navigate(R.id.action_gameInfoFragment_to_gameFragment)
         }
-        return inflater.inflate(R.layout.game_info_fragment, container, false)
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
