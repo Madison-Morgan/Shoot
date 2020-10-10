@@ -14,6 +14,9 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
     <!-- Implement App Text and Font Style Values -->
     <style name= "RobotoTextViewStyle" parent= "android:Widget.TextView" >
         <item name= "android:fontFamily" > sans-serif-medium </item>
